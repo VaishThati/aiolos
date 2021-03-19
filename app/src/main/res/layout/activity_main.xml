@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.aiolos.viewModel.LoginViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        tools:context=".MainActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputEmail"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <EditText
+                android:background="@color/white"
+                android:id="@+id/editTextEmail"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                app:addTextChangedListener="@{viewModel.email}"
+                android:hint="Email"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_below="@+id/textInputEmail"
+            android:id="@+id/textInputPassword"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp">
+            <EditText
+                android:background="@color/white"
+                android:id="@+id/editTextPassword"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:hint="Password"
+                android:maxLines="1"
+                app:addTextChangedListener="@{viewModel.password}"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textInputPassword"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Submit"
+            android:onClick="@{()-> viewModel.onLoginClick()}"
+            android:id="@+id/buttonSubmit"/>
+<!--        android:onClick="@{()->viewModel.onSubmitClick()}"-->
+    </RelativeLayout>
+</layout>
+
